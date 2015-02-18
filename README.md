@@ -17,6 +17,11 @@ $ yum groupinstall "Development Tools"
 $ yum install fedora-packager
 ```
 
+###Install Prerequisites
+```
+$ yum install pcre-devel openssl-devel
+```
+
 ###Setup the `/rpmbuild Directory
 Assuming this source was cloned into `~/nginx-with-ldap-plugin-rpm`
 ```
