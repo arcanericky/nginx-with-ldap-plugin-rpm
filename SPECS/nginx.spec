@@ -61,6 +61,7 @@ Source6: nginx.vh.example_ssl.conf
 Source7: nginx.suse.init
 Source8: nginx.service
 Source9: nginx.upgrade.sh
+Source10: nginx-auth-ldap.tar.gz
 
 License: 2-clause BSD-like license
 
@@ -83,6 +84,7 @@ Not stripped version of nginx built with the debugging log support.
 
 %prep
 %setup -q
+%{__tar} zxvf %{SOURCE10}
 
 %build
 ./configure \
@@ -117,6 +119,7 @@ Not stripped version of nginx built with the debugging log support.
         --with-mail_ssl_module \
         --with-file-aio \
         --with-ipv6 \
+	--add-module=nginx-auth-ldap \
         --with-debug \
         %{?with_spdy:--with-http_spdy_module} \
         --with-cc-opt="%{optflags} $(pcre-config --cflags)" \
@@ -156,6 +159,7 @@ make %{?_smp_mflags}
         --with-mail_ssl_module \
         --with-file-aio \
         --with-ipv6 \
+	--add-module=nginx-auth-ldap \
         %{?with_spdy:--with-http_spdy_module} \
         --with-cc-opt="%{optflags} $(pcre-config --cflags)" \
         $*
