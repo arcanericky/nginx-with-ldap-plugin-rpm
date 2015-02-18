@@ -32,3 +32,6 @@ $ git clone https://github.com/arcanericky/nginx-with-ldap-plugin-rpm.git ~/rpmb
 $ rpmbuild -ba ~/rpmbuild/SPECS/nginx.spec
 ```
 Output will be at `~/rpmbuild/RPMS/x86_64/nginx-1.6.2-1.el7.centos.ngx.x86_64.rpm`
+
+---
+Thanks to https://www.tekovic.com/adding-custom-modules-to-nginx-rpm
