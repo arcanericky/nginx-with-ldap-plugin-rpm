@@ -19,10 +19,10 @@ $ yum install fedora-packager
 
 ###Install Prerequisites
 ```
-$ yum install pcre-devel openssl-devel
+$ yum install libpcre3-devel openssl-devel openldap-devel
 ```
 
-###Setup the `/rpmbuild Directory
+###Setup the ~/rpmbuild Directory
 Assuming this source was cloned into `~/nginx-with-ldap-plugin-rpm`
 ```
 $ mv ~/nginx-with-ldap-plugin-rpm ~/rpmbuild
