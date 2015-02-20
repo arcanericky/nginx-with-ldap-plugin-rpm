@@ -12,7 +12,9 @@ Requires(pre): shadow-utils
 Requires: initscripts >= 8.36
 Requires(post): chkconfig
 Requires: openssl
+Requires: openldap
 BuildRequires: openssl-devel
+BuildRequires: openldap-devel
 %endif
 
 %if 0%{?rhel}  == 6
@@ -21,7 +23,9 @@ Requires(pre): shadow-utils
 Requires: initscripts >= 8.36
 Requires(post): chkconfig
 Requires: openssl >= 1.0.1
+Requires: openldap
 BuildRequires: openssl-devel >= 1.0.1
+BuildRequires: openldap-devel
 %define with_spdy 1
 %endif
 
@@ -30,8 +34,10 @@ Group: System Environment/Daemons
 Requires(pre): shadow-utils
 Requires: systemd
 Requires: openssl >= 1.0.1
+Requires: openldap
 BuildRequires: systemd
 BuildRequires: openssl-devel >= 1.0.1
+BuildRequires: openldap-devel
 Epoch: 1
 %define with_spdy 1
 %endif
@@ -73,7 +79,8 @@ Provides: webserver
 
 %description
 nginx [engine x] is an HTTP and reverse proxy server, as well as
-a mail proxy server.
+a mail proxy server. The nginx-auth-ldap plugin has been added
+to this RPM.
 
 %package debug
 Summary: debug version of nginx
@@ -119,7 +126,7 @@ Not stripped version of nginx built with the debugging log support.
         --with-mail_ssl_module \
         --with-file-aio \
         --with-ipv6 \
-	--add-module=nginx-auth-ldap \
+        --add-module=nginx-auth-ldap \
         --with-debug \
         %{?with_spdy:--with-http_spdy_module} \
         --with-cc-opt="%{optflags} $(pcre-config --cflags)" \
@@ -159,7 +166,7 @@ make %{?_smp_mflags}
         --with-mail_ssl_module \
         --with-file-aio \
         --with-ipv6 \
-	--add-module=nginx-auth-ldap \
+        --add-module=nginx-auth-ldap \
         %{?with_spdy:--with-http_spdy_module} \
         --with-cc-opt="%{optflags} $(pcre-config --cflags)" \
         $*
@@ -331,6 +338,10 @@ if [ $1 -ge 1 ]; then
 fi
 
 %changelog
+* Fri Feb 20 2015 Ricky Pike <arcanericky@gmail.com>
+- add LDAP plugin
+- 1.6.2
+
 * Tue Sep 16 2014 Sergey Budnevitch <sb@nginx.com>
 - epoch added to the EPEL7/CentOS7 spec to override EPEL one
 - 1.6.2
