@@ -19,7 +19,7 @@ $ yum install fedora-packager
 
 ###Install Prerequisites
 ```
-$ yum install libpcre3-devel openssl-devel openldap-devel
+$ yum install libpcre3-devel openssl-devel openldap-devel openldap
 ```
 
 ###Setup the ~/rpmbuild Directory
